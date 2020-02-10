@@ -51,3 +51,47 @@ Route::get('/enderecos', function () {
     }
 });
 
+Route::get("/inserir", function() {
+
+    $c = new Cliente();
+
+    $c->nome = "José Almeida";
+    $c->telefone = "11 99244-7878";
+    $c->save();
+    
+    $e = new Endereco();
+    $e->rua = "Avenida Brasil";
+    $e->numero = 400;
+    $e->bairro = "Centro";
+    $e->cidade = "São Paulo";
+    $e->uf = "SP";
+    $e->cep = "13010-456";
+    // $e->cliente_id = $c->id; uma opção
+    // ou através do relacionamento
+
+    // Através do cliente, chamar a função endereço()
+    // Salvando dentro do endereço da tablea cliente
+    $c->endereco()->save($e);
+
+    $c = new Cliente();
+
+    $c->nome = "Marcos Silva";
+    $c->telefone = "11 99212-5878";
+    $c->save();
+    
+    $e = new Endereco();
+    $e->rua = "Avenida Abreu";
+    $e->numero = 4200;
+    $e->bairro = "Colorado";
+    $e->cidade = "Londrina";
+    $e->uf = "PR";
+    $e->cep = "43874-456";
+    // $e->cliente_id = $c->id; uma opção
+    // ou através do relacionamento
+
+    // Através do cliente, chamar a função endereço()
+    // Salvando dentro do endereço da tablea cliente
+    $c->endereco()->save($e);
+    
+    
+});
