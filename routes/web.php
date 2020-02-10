@@ -11,6 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Cliente;
+use App\Endereco;
+
+Route::get('/clientes', function () {
+    $clientes = Cliente::all();
+    foreach($clientes as $c) {
+        echo "<p>Id: " . $c->id . "</p>";
+        echo "<p>Nome: " . $c->nome . "</p>";
+        echo "<p>Telefone: " . $c->telefone . "</p>";
+        echo "<hr>";
+    }
 });
+
+
+Route::get('/enderecos', function () {
+    $endereco = Endereco::all();
+    foreach($endereco as $end) {
+        echo "<p>Cliente Id: " . $end->id . "</p>";
+        echo "<p>Rua: " . $end->rua . "</p>";
+        echo "<p>Numero: " . $end->numero . "</p>";
+        echo "<p>Bairro: " . $end->bairro . "</p>";
+        echo "<p>Cidade: " . $end->cidade . "</p>";
+        echo "<p>UF: " . $end->uf . "</p>";
+        echo "<p>CEP: " . $end->cep . "</p>";
+        echo "<hr>";
+    }
+});
+
