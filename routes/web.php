@@ -20,6 +20,14 @@ Route::get('/clientes', function () {
         echo "<p>Id: " . $c->id . "</p>";
         echo "<p>Nome: " . $c->nome . "</p>";
         echo "<p>Telefone: " . $c->telefone . "</p>";
+        echo "<br />";
+        echo "<p>Rua: " . $c->endereco->rua . "</p>";
+        echo "<p>Numero: " . $c->endereco->numero . "</p>";
+        echo "<p>Bairro: " . $c->endereco->bairro . "</p>";
+        echo "<p>Cidade: " . $c->endereco->cidade . "</p>";
+        echo "<p>UF: " . $c->endereco->uf . "</p>";
+        echo "<p>CEP: " . $c->endereco->cep . "</p>";
+        
         echo "<hr>";
     }
 });
