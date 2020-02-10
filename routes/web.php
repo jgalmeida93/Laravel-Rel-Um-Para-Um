@@ -91,7 +91,11 @@ Route::get("/inserir", function() {
 
     // Através do cliente, chamar a função endereço()
     // Salvando dentro do endereço da tablea cliente
-    $c->endereco()->save($e);
-    
-    
+    $c->endereco()->save($e); 
+});
+
+Route::get("/clientes/json", function() {
+    // $clientes = Cliente::all();
+    $clientes = Cliente::with(['endereco'])->get();
+    return $clientes->toJson();
 });
